@@ -1,0 +1,10 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[bigips]
+ip-10-1-1-4.us-west-2.compute.internal
+ip-10-1-1-5.us-west-2.compute.internal
+
+[bigiqs]
+ip-10-1-1-6.us-west-2.compute.internal
+ip-10-1-1-7.us-west-2.compute.internal

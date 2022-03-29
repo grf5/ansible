@@ -1,0 +1,12 @@
+---
+- name: AS3
+  hosts: bigips
+  connection: httpapi
+  gather_facts: false
+
+  tasks:
+
+    - name: Deploy or Update AS3
+      f5networks.f5_bigip.bigip_as3_deploy:
+          content: "{{ lookup('file', 'as3.json') }}"
+      tags: [ deploy ]
