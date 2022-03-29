@@ -1,1 +1,43 @@
+### Ansible ###
+*.retry
+
+### AnsibleTower ###
+# Ansible runtime and backups
+*.original
+*.tmp
+*.bkp
+*.*~
+
+# Tower runtime roles
+roles/**
+!roles/requirements.yml
+
+# Avoid plain-text passwords
+*pwd*
+*pass*
+*password*
+*.txt
+
+# Exclude all binaries
+*.bin
+*.jar
+*.tar
+*.zip
+*.gzip
+*.tgz
+
+
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
 env
