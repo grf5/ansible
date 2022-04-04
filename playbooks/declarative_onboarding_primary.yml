@@ -1,0 +1,17 @@
+- name: DO_primary
+  hosts: ip-10-1-1-7.us-west-2.compute.internal 
+  connection: httpapi
+  gather_facts: false
+
+  vars:
+    ansible_host: "{{ inventory_hostname }}"
+
+  collections: 
+    - f5networks.f5_bigip
+
+  tasks:   
+    - name: Deploy DO Declaration
+      bigiq_do_deploy:
+        content: "{{ lookup('file', 'declarative_onboarding_primary.json') }}"
+      register: task
+

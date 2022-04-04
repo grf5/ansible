@@ -1,0 +1,104 @@
+{
+  "class": "DO",
+  "declaration": {
+    "schemaVersion": "1.21.0",
+    "class": "Device",
+    "async": true,
+    "Common": {
+      "class": "Tenant",
+      "myProvision": {
+        "class": "Provision",
+        "ltm": "nominal"
+      },
+      "myNtp": {
+        "class": "NTP",
+        "servers": [
+          "169.254.169.123"
+        ],
+        "timezone": "UTC"
+      },
+      "mySsh": {
+        "class": "SSHD",
+        "banner": "Warning! No bad actors!",
+        "inactivityTimeout": 86400,
+        "protocol": 2
+      },
+      "internal": {
+        "class": "VLAN",
+        "tag": 4093,
+        "mtu": 1500,
+        "interfaces": [{
+          "name": "1.2",
+          "tagged": false
+        }]
+      },
+      "external": {
+        "class": "VLAN",
+        "tag": 4092,
+        "mtu": 1500,
+        "interfaces": [{
+          "name": "1.1",
+          "tagged": false
+        }]
+      },
+      "internal-self": {
+        "class": "SelfIp",
+        "address": "10.1.20.4/24",
+        "vlan": "internal",
+        "allowService": "default",
+        "trafficGroup": "traffic-group-local-only"
+      },
+      "external-self": {
+        "class": "SelfIp",
+        "address": "10.1.10.4/24",
+        "vlan": "external",
+        "allowService": "default",
+        "trafficGroup": "traffic-group-local-only"
+      },
+      "configSync": {
+        "class": "ConfigSync",
+        "configsyncIp": "/Common/internal-self/address"
+      },
+      "failoverAddress": {
+        "class": "FailoverUnicast",
+        "address": "/Common/internal-self/address"
+      },
+      "myTrust": {
+        "class": "DeviceTrust",
+        "localUsername": "admin",
+        "localPassword": "f5c0nfig123!",
+        "remoteHost": "10.1.1.5",
+        "remoteUsername": "admin",
+        "remotePassword": "f5c0nfig123!"
+      },
+      "failoverGroup": {
+        "class": "DeviceGroup",
+        "type": "sync-failover",
+        "members": [
+          "ip-10-1-1-4.us-west-2.compute.internal",
+          "ip-10-1-1-5.us-west-2.compute.internal"
+        ],
+        "owner": "/Common/failoverGroup/members/0",
+        "autoSync": true,
+        "saveOnAutoSync": false,
+        "networkFailover": false,
+        "fullLoadOnSync": false,
+        "asmSync": false
+      }
+    }
+  },
+  "targetHost": "10.1.1.4",
+  "targetUsername": "admin",
+  "targetPassphrase": "f5c0nfig123!",
+  "bigIqSettings": {
+    "clusterName": "LabCluster",
+    "failImportOnConflict": false,
+    "conflictPolicy": "USE_BIGIQ",
+    "deviceConflictPolicy": "USE_BIGIP",
+    "versionedConflictPolicy": "KEEP_VERSION",
+    "statsConfig": {
+      "enabled": true,
+      "zone": "default"
+    }
+  }
+}

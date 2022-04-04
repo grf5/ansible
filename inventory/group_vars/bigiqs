@@ -1,11 +1,5 @@
 ---
 
-provider:
-  user: admin
-  password: f5c0nfig123!
-  validate_certs: no
-  server_port: 443
-  server: "{{ inventory_hostname }}"
 ansible_user: admin
 ansible_httpapi_password: f5c0nfig123!
 ansible_httpapi_port: 443

@@ -5,8 +5,6 @@
   gather_facts: false
   connection: local
 
-  environment: "{{ bigip_env }}"
-
   tasks:
     - name: View system version and LTM configuration
       bigip_command:
@@ -15,8 +13,8 @@
           - list /ltm virtual all
           - list /ltm pool all
           - list /ltm node all
+        provider: "{{ provider }}"
       register: result
-
     - debug: msg="{{ result.stdout_lines }}"
 
 ...
