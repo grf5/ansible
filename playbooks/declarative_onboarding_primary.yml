@@ -1,5 +1,5 @@
 - name: DO_primary
-  hosts: ip-10-1-1-7.us-west-2.compute.internal 
+  hosts: ip-10-1-1-6.us-west-2.compute.internal 
   connection: httpapi
   gather_facts: false
 

@@ -8,7 +8,12 @@
       "class": "Tenant",
       "myProvision": {
         "class": "Provision",
-        "ltm": "nominal"
+        "ltm": "nominal",
+	"ilx": "nominal"
+      },
+      "dbvars": {
+	"class": "DbVariables",
+	"provision.extramb": "500"
       },
       "myNtp": {
         "class": "NTP",
@@ -81,7 +86,7 @@
         "owner": "/Common/failoverGroup/members/0",
         "autoSync": true,
         "saveOnAutoSync": false,
-        "networkFailover": false,
+        "networkFailover": true,
         "fullLoadOnSync": false,
         "asmSync": false
       }

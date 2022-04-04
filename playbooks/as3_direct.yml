@@ -1,6 +1,6 @@
 ---
 - name: AS3
-  hosts: ip-10-1-1-6.us-west-2.compute.internal
+  hosts: ip-10-1-1-4.us-west-2.compute.internal
   connection: httpapi
   gather_facts: false
 
@@ -12,7 +12,7 @@
 
   tasks:
     - name: Deploy or Update AS3
-      bigiq_as3_deploy:
-        content: "{{ lookup('file', 'app1-bigiq.json') }}"
+      bigip_as3_deploy:
+        content: "{{ lookup('file', 'app1-bigip.json') }}"
         state: present
         
